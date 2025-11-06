@@ -1,0 +1,53 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/*
+|--------------------------------------------------------------------------
+| Midtrans Configuration
+|--------------------------------------------------------------------------
+|
+| Configuration untuk Midtrans Payment Gateway
+|
+*/
+
+$config['midtrans'] = [
+    // Server Key (untuk transaksi server-side)
+    // Get from .env file or replace with your actual key
+    'server_key' => getenv('MIDTRANS_SERVER_KEY') ?: 'Mid-server-YOUR_SERVER_KEY_HERE',
+
+    // Client Key (untuk client-side Snap)
+    // Get from .env file or replace with your actual key
+    'client_key' => getenv('MIDTRANS_CLIENT_KEY') ?: 'Mid-client-YOUR_CLIENT_KEY_HERE',
+
+    // Environment: 'sandbox' untuk development, 'production' untuk live
+    'environment' => getenv('MIDTRANS_ENVIRONMENT') ?: 'sandbox',
+
+    // 3DSecure (Optional)
+    '3ds_secure' => true,
+
+    // Sanitized (Optional)
+    'sanitized' => true,
+
+    // Payment Methods yang diizinkan
+    'enabled_payments' => [
+        'credit_card',
+        'gopay',
+        'shopeepay',
+        'dana',
+        'qris',
+        'bca_va',
+        'bni_va',
+        'bri_va',
+        'cimb_va',
+        'permata_va',
+        'other_va'
+    ],
+
+    // Expiry waktu (dalam menit)
+    'expiry_duration' => 60,
+
+    // Custom field untuk order ID
+    'custom_field1' => 'ERP_ISP',
+    'custom_field2' => 'TAGIHAN_BULANAN',
+    'custom_field3' => 'PAYMENT_GATEWAY'
+];
